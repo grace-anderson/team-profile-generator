@@ -6,7 +6,6 @@ const fs = require("fs");
 
 //require local modules
 const requiredQuestions = require("./src/requiredQuestions");
-const { listenerCount } = require("process");
 
 //array of questions for user input
 const questions = () => {
@@ -157,7 +156,7 @@ const questions = () => {
       validate: requiredQuestions("Github username is required"),
     },
     /////end engineer
-    
+
     //2. enter intern
     {
       type: "input",
