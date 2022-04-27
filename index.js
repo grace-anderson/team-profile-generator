@@ -82,6 +82,7 @@ const questions = () => {
     },
     //end team manager input
     // choice to 1. enter engineer 2. enter intern 3. finish building team
+    // need to work out how to return to this after engineer and intern complete data input
     {
       type: "list",
       name: "nextEntry",
