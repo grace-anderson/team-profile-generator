@@ -266,12 +266,12 @@ const createHTML = (teamOnRoster) =>
   <div class="jumbotron jumbotron-fluid">
   <div class="container">
   <div class="team-manager"
-    <h1 class="display-4">Hi! I am the ${teamManager.name}</h1>
-    <p class="lead">Employee ID ${teamManager.employeeId}.</p>
+    <h1 class="display-4">Hi! I am the ${teamManager.returnName()}</h1>
+    <p class="lead">Employee ID ${teamManager.returnEmployeeId()}.</p>
     <h3>Example heading <span class="badge badge-secondary">Contact Me</span></h3>
     <ul class="list-group">
-      <li class="list-group-item">My email is ${teamManager.email}</li>
-      <li class="list-group-item">My office number is: ${teamManager.officeNo}</li>
+      <li class="list-group-item">My email is ${teamManager.returnEmail()}</li>
+      <li class="list-group-item">My office number is: ${teamManager.returnOfficeNo()}</li>
     </ul>
   </div>
 </div>
