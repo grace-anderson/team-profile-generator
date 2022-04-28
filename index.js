@@ -6,7 +6,7 @@ const fs = require("fs");
 
 //require local modules
 const requiredQuestions = require("./src/requiredQuestions");
-const createHTML = require("./src/createHTML");
+// const createHTML = require("./src/createHTML");
 
 //import sub-classes
 const teamManager = require("./lib/team-manager");
