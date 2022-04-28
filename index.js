@@ -96,7 +96,7 @@ const createTeamManager = () => {
     });
 };
 
-// addTeamMembers called by createTeamManager to handle repeated selection of engineer or intern until Finish selected by user (which will trigger creation of html file)
+// addTeamMembers called by createTeamManager to handle repeated selection of engineer or intern until Finish selected by user. Selecting Finish triggers creation of html file
 const addTeamMembers = () => {
   inquirer
     .prompt([
@@ -253,7 +253,7 @@ const createIntern = () => {
     });
 };
 
-const createHtml = (teamOnRoster) =>
+const createHTML = (teamOnRoster) =>
   `<!DOCTYPE html>
 <html lang="en">
 <head>
