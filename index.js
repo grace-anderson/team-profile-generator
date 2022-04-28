@@ -6,6 +6,7 @@ const fs = require("fs");
 
 //require local modules
 const requiredQuestions = require("./src/requiredQuestions");
+const createHtml = require("./src/createHtml");
 
 //import sub-classes
 const teamManager = require("./lib/team-manager");
@@ -44,10 +45,13 @@ const addTeamMembers = () => {
         console.log(parsedTeamOnRoster);
 
         console.log(`\n -----teamOnRoster parsed to JSON----- \n`);
-        fs.writeFileSync("./team.json", JSON.stringify(teamOnRoster))
+        fs.writeFileSync("./team.json", JSON.stringify(teamOnRoster));
 
-        const teamJsonFile = JSON.parse(fs.readFileSync("./team.json", "utf8"))
+        const teamJsonFile = JSON.parse(fs.readFileSync("./team.json", "utf8"));
         console.log("Team file", teamJsonFile);
+        //create html file
+
+        // fs.writeFileSync("./dist/index.html", createHtml(teamJsonFile));
         // console.log(`\n -----teamOnRoster write JSON file----- \n`);
         // fs.writeFile('file.json', teamJSONString);
         //TODO - use below when generating html file
@@ -65,13 +69,13 @@ const createTeamManager = () => {
     .prompt([
       {
         type: "input",
-        name: "mgrName",
+        name: "name",
         message: `What is the team manager's name? (Required)`,
         validate: requiredQuestions("Team manager's name is required"),
       },
       {
         type: "input",
-        name: "mgrEmployeeId",
+        name: "employeeId",
         message: `What is the team manager's employee ID? (Required, numbers only)`,
         validate: (employeeId) => {
           const numberRegex = /^\d+$/;
@@ -92,7 +96,7 @@ const createTeamManager = () => {
       },
       {
         type: "input",
-        name: "mgrEmail",
+        name: "email",
         message: `What is the team manager's email address? (Valid email required)`,
         validate: (emailInput) => {
           const validRegex =
@@ -112,7 +116,7 @@ const createTeamManager = () => {
       },
       {
         type: "input",
-        name: "mgrOfficeNo",
+        name: "officeNo",
         message: `What is the team manager's office number? (Required, numbers only)`,
         validate: (mgrOfficeNo) => {
           const numberRegex = /^\d+$/;
@@ -132,13 +136,8 @@ const createTeamManager = () => {
         },
       },
     ])
-    .then(({ mgrName, mgrEmployeeId, mgrEmail, mgrOfficeNo }) => {
-      let newTeamManager = new teamManager(
-        mgrName,
-        mgrEmployeeId,
-        mgrEmail,
-        mgrOfficeNo
-      );
+    .then(({ name, employeeId, email, officeNo }) => {
+      let newTeamManager = new teamManager(name, employeeId, email, officeNo);
       teamOnRoster.push(newTeamManager);
       addTeamMembers();
     });
@@ -149,13 +148,13 @@ const createEngineer = () => {
     .prompt([
       {
         type: "input",
-        name: "engName",
+        name: "name",
         message: `What is the engineer's name? (Required)`,
         validate: requiredQuestions("Engineer's name is required"),
       },
       {
         type: "input",
-        name: "engEmployeeId",
+        name: "employeeId",
         message: `What is the engineer's employee ID? (Required, numbers only)`,
         validate: (employeeId) => {
           const numberRegex = /^\d+$/;
@@ -176,7 +175,7 @@ const createEngineer = () => {
       },
       {
         type: "input",
-        name: "engEmail",
+        name: "email",
         message: `What is the engineers's email address? (Valid email required)`,
         validate: (emailInput) => {
           const validRegex =
@@ -201,8 +200,8 @@ const createEngineer = () => {
         validate: requiredQuestions("Github username is required"),
       },
     ])
-    .then(({ engName, engEmployeeId, engEmail, github }) => {
-      let newEngineer = new engineer(engName, engEmployeeId, engEmail, github);
+    .then(({ name, employeeId, email, github }) => {
+      let newEngineer = new engineer(name, employeeId, email, github);
       teamOnRoster.push(newEngineer);
       addTeamMembers();
     });
@@ -213,13 +212,13 @@ const createIntern = () => {
     .prompt([
       {
         type: "input",
-        name: "internName",
+        name: "name",
         message: `What is the intern's name? (Required)`,
         validate: requiredQuestions("Intern's name is required"),
       },
       {
         type: "input",
-        name: "internEmployeeId",
+        name: "employeeId",
         message: `What is the intern's employee ID? (Required, numbers only)`,
         validate: (employeeId) => {
           const numberRegex = /^\d+$/;
@@ -240,7 +239,7 @@ const createIntern = () => {
       },
       {
         type: "input",
-        name: "internEmail",
+        name: "email",
         message: `What is the intern's email address? (Valid email required)`,
         validate: (emailInput) => {
           const validRegex =
@@ -260,18 +259,13 @@ const createIntern = () => {
       },
       {
         type: "input",
-        name: "internSchool",
+        name: "school",
         message: `What is the intern's school (Required)`,
         validate: requiredQuestions("Intern's school is required"),
       },
     ])
-    .then(({ internName, internEmployeeId, internEmail, internSchool }) => {
-      let newIntern = new intern(
-        internName,
-        internEmployeeId,
-        internEmail,
-        internSchool
-      );
+    .then(({ name, employeeId, email, school }) => {
+      let newIntern = new intern(name, employeeId, email, school);
       teamOnRoster.push(newIntern);
       addTeamMembers();
     });
