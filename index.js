@@ -9,9 +9,9 @@ const requiredQuestions = require("./src/requiredQuestions");
 // const createHTML = require("./src/createHTML");
 
 //import sub-classes
-const teamManager = require("./lib/team-manager");
-const engineer = require("./lib/engineer");
-const intern = require("./lib/intern");
+const teamManager = require("./lib/Team-manager");
+const engineer = require("./lib/Engineer");
+const intern = require("./lib/Intern");
 
 //array collects all the new instances of each sub-class created by user
 const teamOnRoster = [];
@@ -284,7 +284,6 @@ const init = () => {
     // Use writeFileSync method to use promises instead of a callback function
     
 };
-
 
 // kick off (initialize) app
 init();
