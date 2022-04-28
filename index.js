@@ -120,7 +120,7 @@ const addTeamMembers = () => {
         console.log(`\n -----teamOnRoster array----- \n`);
         console.log(teamOnRoster);
         //write file
-        fs.writeFileSync('index.html', createHTML(teamOnRoster))
+        fs.writeFileSync("./dist/index.html", createHTML(teamOnRoster))
       }
     });
 };
