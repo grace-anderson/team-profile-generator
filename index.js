@@ -6,7 +6,7 @@ const fs = require("fs");
 
 //require local modules
 const requiredQuestions = require("./src/requiredQuestions");
-const createHtml = require("./src/createHtml");
+const createHTML = require("./src/createHTML");
 
 //import sub-classes
 const teamManager = require("./lib/team-manager");
@@ -15,53 +15,6 @@ const intern = require("./lib/intern");
 
 //array collects all the new instances of each sub-class created by user
 const teamOnRoster = [];
-
-// After teamManager triggered by init, addTeamMembers function called to handle repeated selection of engineer or intern until Finish selected by user (which will trigger creation of html file)
-const addTeamMembers = () => {
-  inquirer
-    .prompt([
-      {
-        type: "list",
-        name: "nextEntry",
-        message:
-          "Select to add engineer or an intern or finish to finish building the team roster",
-        choices: ["Engineer", "Intern", "Finish"],
-      },
-    ])
-    .then((selected) => {
-      if (selected.nextEntry === "Engineer") {
-        createEngineer();
-      } else if (selected.nextEntry === "Intern") {
-        createIntern();
-      } else {
-        //triggers creation of html file
-        console.log(`TODO - create html file`);
-        console.log(`\n -----teamOnRoster array----- \n`);
-        console.log(teamOnRoster);
-        console.log(`\n -----teamOnRoster parsed to JSON----- \n`);
-        const teamJSONString = JSON.stringify(teamOnRoster);
-
-        const parsedTeamOnRoster = JSON.parse(teamJSONString);
-        console.log(parsedTeamOnRoster);
-
-        console.log(`\n -----teamOnRoster parsed to JSON----- \n`);
-        fs.writeFileSync("./team.json", JSON.stringify(teamOnRoster));
-
-        const teamJsonFile = JSON.parse(fs.readFileSync("./team.json", "utf8"));
-        console.log("Team file", teamJsonFile);
-        //create html file
-
-        // fs.writeFileSync("./dist/index.html", createHtml(teamJsonFile));
-        // console.log(`\n -----teamOnRoster write JSON file----- \n`);
-        // fs.writeFile('file.json', teamJSONString);
-        //TODO - use below when generating html file
-        // questions()
-        //   .then((answers) => fs.writeFileSync(`README.md`, generateMarkdown(answers)))
-        //   .then(() => console.log("Successfully created README.md"))
-        //   .catch((err) => console.error(err));
-      }
-    });
-};
 
 //first create team manager, at end calls addTeamMembers for user to select engineer, intern or finish
 const createTeamManager = () => {
@@ -140,6 +93,35 @@ const createTeamManager = () => {
       let newTeamManager = new teamManager(name, employeeId, email, officeNo);
       teamOnRoster.push(newTeamManager);
       addTeamMembers();
+    });
+};
+
+// addTeamMembers called by createTeamManager to handle repeated selection of engineer or intern until Finish selected by user (which will trigger creation of html file)
+const addTeamMembers = () => {
+  inquirer
+    .prompt([
+      {
+        type: "list",
+        name: "nextEntry",
+        message:
+          "Select to add engineer or an intern or finish to finish building the team roster",
+        choices: ["Engineer", "Intern", "Finish"],
+      },
+    ])
+    .then((selected) => {
+      if (selected.nextEntry === "Engineer") {
+        createEngineer();
+      } else if (selected.nextEntry === "Intern") {
+        createIntern();
+      } else {
+        //trigger creation of html file
+        //making sure data exists
+        console.log(`TODO - create html file`);
+        console.log(`\n -----teamOnRoster array----- \n`);
+        console.log(teamOnRoster);
+        //write file
+        fs.writeFileSync('index.html', createHTML(teamOnRoster))
+      }
     });
 };
 
@@ -271,10 +253,38 @@ const createIntern = () => {
     });
 };
 
-// initialize app, which calls createTeamManager
+const createHtml = (teamOnRoster) =>
+  `<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+  <title>Document</title>
+</head>
+<body>
+  <div class="jumbotron jumbotron-fluid">
+  <div class="container">
+  <div class="team-manager"
+    <h1 class="display-4">Hi! I am the ${teamManager.name}</h1>
+    <p class="lead">Employee ID ${teamManager.employeeId}.</p>
+    <h3>Example heading <span class="badge badge-secondary">Contact Me</span></h3>
+    <ul class="list-group">
+      <li class="list-group-item">My email is ${teamManager.email}</li>
+      <li class="list-group-item">My office number is: ${teamManager.officeNo}</li>
+    </ul>
+  </div>
+</div>
+</body>
+</html>`;
+
+// initialize app, which calls createTeamManager to kick off process
 const init = () => {
-  createTeamManager();
+  createTeamManager()
+    // Use writeFileSync method to use promises instead of a callback function
+    
 };
+
 
 // kick off (initialize) app
 init();
