@@ -22,8 +22,10 @@
   "homepage": "https://github.com/grace-anderson/team-profile-generator#readme",
   "dependencies": {
     "bootstrap": "^5.1.3",
+    "bootstrap-icons": "^1.8.1",
     "express": "^4.18.0",
-    "inquirer": "^8.2.3",
-    "jest": "^28.0.1"
+    "github-username-regex": "^1.0.0",
+    "inquirer": "^8.2.4",
+    "jest": "^28.0.2"
   }
 }
