@@ -13,6 +13,7 @@ const TeamManager = require("./lib/TeamManager");
 const Intern = require("./lib/Intern");
 const Engineer = require("./lib/Engineer");
 const { validateEmail } = require("./src/validate");
+const { validateId } = require("./src/validate");
 
 //count to enforce entry of only one team manager
 let count = 0;
@@ -56,22 +57,7 @@ class Prompt {
                 type: "input",
                 name: "id",
                 message: `What is the team manager's employee ID? (Required, numbers only)`,
-                validate: (id) => {
-                  const numberRegex = /^\d+$/;
-                  if (id) {
-                    if (id.match(numberRegex)) {
-                      return true;
-                    } else {
-                      console.log(
-                        `: ${id} is an invalid employee ID. The employee ID should contain numbers only`
-                      );
-                      return false;
-                    }
-                  } else {
-                    console.log("Employee ID is required");
-                    return false;
-                  }
-                },
+                validate: validateId,
               },
               {
                 type: "input",

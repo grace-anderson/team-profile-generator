@@ -5,6 +5,15 @@ function validateEmail(value) {
 
   return validRegex.test(value);
 }
+
+
+function validateId(value) {
+  const validRegex =
+  /^\d+$/;
+
+  return validRegex.test(value);
+}
+
 module.exports = {
-  validateEmail,
+  validateEmail, validateId,
 };
