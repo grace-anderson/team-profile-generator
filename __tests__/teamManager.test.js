@@ -7,24 +7,29 @@ const InvalidOfficeNumberError = require("../exception/InvalidOfficeNumberError"
 describe("TeamManager Test", () => {
   // TeamManager should be a class
   test("if Team Manager is a class", () => {
-    const abc = new TeamManager("helen", 1, "aa@aa.com", 999);
+    const newTeamManager = new TeamManager(
+      "Ninfa Cadenhead",
+      101,
+      "ninfa@galacticroster.com",
+      12345
+    );
 
-    expect(abc).toBeInstanceOf(Object);
-    expect(abc).toBeInstanceOf(TeamManager);
+    expect(newTeamManager).toBeInstanceOf(Object);
+    expect(newTeamManager).toBeInstanceOf(TeamManager);
   });
 
   // 2. getName()
   // TeamManager constructor should return name
   test("getName() should return name string", () => {
     const teamManager = new TeamManager(
-      "Helen Anderson",
-      "9876",
-      "helen@me.com",
-     999
+      "Ninfa Cadenhead",
+      101,
+      "ninfa@galacticroster.com",
+      12345
     );
 
     expect(teamManager.getName()).toEqual(
-      expect.stringContaining("Helen Anderson")
+      expect.stringContaining("Ninfa Cadenhead")
     );
   });
 
@@ -34,16 +39,26 @@ describe("TeamManager Test", () => {
     const id = "aaa";
 
     expect(function () {
-      const teamManager = new TeamManager("helen", id, "helen@helen.com", 999);
+      const teamManager = new TeamManager(
+        "Ninfa Cadenhead",
+        id,
+        "ninfa@galacticroster.com",
+        12345
+      );
     }).toThrow(InvalidIdError);
   });
 
   // 4. I should get the id that I set in the constructor
   test("getId() should return the id that was set in the constructor", () => {
     // define id source of truth
-    const id = 123;
+    const id = 101;
     // set up the environment to test
-    const teamManager = new TeamManager("helen", id, "helen@helen.com", 999);
+    const teamManager = new TeamManager(
+      "Ninfa Cadenhead",
+      id,
+      "ninfa@galacticroster.com",
+      12345
+    );
     // execute the test code
     const result = teamManager.getId();
     // compare result to constructor requirements (assert)
@@ -56,16 +71,16 @@ describe("TeamManager Test", () => {
     const email = "aaa";
 
     expect(function () {
-      const teamManager = new TeamManager("helen", 1, email, 999);
+      const teamManager = new TeamManager("Ninfa Cadenhead", 101, email, 12345);
     }).toThrow(InvalidEmailError);
   });
 
   // 6. I should get the email that I set in the constructor
   test("getEmail() should return the email that was set in the constructor", () => {
     // define email source of truth
-    const email = "helen@helen.com";
+    const email = "ninfa@galacticroster.com";
     // set up the environment to test
-    const teamManager = new TeamManager("helen", 1, email, 999);
+    const teamManager = new TeamManager("Ninfa Cadenhead", 101, email, 12345);
     // execute the test code
     const result = teamManager.getEmail();
     // compare result to constructor requirements (assert)
@@ -76,10 +91,10 @@ describe("TeamManager Test", () => {
   // 7. I should get the role that I set in the constructor
   test("getRole() should return 'Team Manager' for TeamManager class", () => {
     const teamManager = new TeamManager(
-      "Helen Anderson",
-      "9876",
-      "helen@me.com",
-      999
+      "Ninfa Cadenhead",
+      101,
+      "ninfa@galacticroster.com",
+      12345
     );
 
     expect(teamManager.getRole()).toEqual(
@@ -93,9 +108,9 @@ describe("TeamManager Test", () => {
 
     expect(function () {
       const teamManager = new TeamManager(
-        "helen",
-        123,
-        "helen@helen.com",
+        "Ninfa Cadenhead",
+        101,
+        "ninfa@galacticroster.com",
         officeNumber
       );
     }).toThrow(InvalidOfficeNumberError);
@@ -104,12 +119,12 @@ describe("TeamManager Test", () => {
   // 9. I should get the office number that I set in the constructor
   test("getOfficeNumber() should return the officeNumber that was set in the constructor", () => {
     // define id source of truth
-    const officeNumber = 123;
+    const officeNumber = 12345;
     // set up the environment to test
     const teamManager = new TeamManager(
-      "helen",
-      987,
-      "helen@helen.com",
+      "Ninfa Cadenhead",
+      101,
+      "ninfa@galacticroster.com",
       officeNumber
     );
     // execute the test code
@@ -117,5 +132,4 @@ describe("TeamManager Test", () => {
     // compare result to constructor requirements (assert)
     expect(result).toBe(officeNumber);
   });
-
 });

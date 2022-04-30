@@ -7,25 +7,28 @@ const InvalidGitHubUsernameError = require("../exception/InvalidGitHubUsernameEr
 describe("Engineer Test", () => {
   // Engineer should be a class
   test("if Engineer is a class", () => {
-    const abc = new Engineer("helen", 1, "aa@aa.com", "helen-github");
+    const newEngineer = new Engineer(
+      "Hank Sreaves",
+      999,
+      "hank@galacticroster.com",
+      "fabpot"
+    );
 
-    expect(abc).toBeInstanceOf(Object);
-    expect(abc).toBeInstanceOf(Engineer);
+    expect(newEngineer).toBeInstanceOf(Object);
+    expect(newEngineer).toBeInstanceOf(Engineer);
   });
 
   // 2. getName()
   // TeamManager constructor should return name
   test("getName() should return name string", () => {
     const engineer = new Engineer(
-      "Helen Anderson",
-      "9876",
-      "helen@me.com",
-      "helen-github"
+      "Hank Sreaves",
+      999,
+      "hank@galacticroster.com",
+      "fabpot"
     );
 
-    expect(engineer.getName()).toEqual(
-      expect.stringContaining("Helen Anderson")
-    );
+    expect(engineer.getName()).toEqual(expect.stringContaining("Hank Sreaves"));
   });
 
   // getId()
@@ -35,10 +38,10 @@ describe("Engineer Test", () => {
 
     expect(function () {
       const engineer = new Engineer(
-        "helen",
+        "Hank Sreaves",
         id,
-        "helen@helen.com",
-        "helen-github"
+        "hank@galacticroster.com",
+        "Hank Sreaves"
       );
     }).toThrow(InvalidIdError);
   });
@@ -46,9 +49,14 @@ describe("Engineer Test", () => {
   // 4. I should get the id that I set in the constructor
   test("getId() should return the id that was set in the constructor", () => {
     // define id source of truth
-    const id = 123;
+    const id = 999;
     // set up the environment to test
-    const engineer = new Engineer("helen", id, "helen@helen.com", "helen-github");
+    const engineer = new Engineer(
+      "Hank Sreaves",
+      id,
+      "hank@galacticroster.com",
+      "fabpot"
+    );
     // execute the test code
     const result = engineer.getId();
     // compare result to constructor requirements (assert)
@@ -61,16 +69,16 @@ describe("Engineer Test", () => {
     const email = "aaa";
 
     expect(function () {
-      const engineer = new Engineer("helen", 1, email, "helen-github");
+      const engineer = new Engineer("Hank Sreaves", 999, email, "fabpot");
     }).toThrow(InvalidEmailError);
   });
 
   // 6. I should get the email that I set in the constructor
   test("getEmail() should return the email that was set in the constructor", () => {
     // define email source of truth
-    const email = "helen@helen.com";
+    const email = "hank@galacticroster.com";
     // set up the environment to test
-    const engineer = new Engineer("helen", 1, email, "helen-github");
+    const engineer = new Engineer("Hank Sreaves", 999, email, "fabpot");
     // execute the test code
     const result = engineer.getEmail();
     // compare result to constructor requirements (assert)
@@ -81,42 +89,30 @@ describe("Engineer Test", () => {
   // 7. I should get the role that I set in the constructor
   test("getRole() should return 'Engineer' for Engineer class", () => {
     const engineer = new Engineer(
-      "Helen Anderson",
-      "9876",
-      "helen@me.com",
-      "helen-github"
+      "Hank Sreaves",
+      999,
+      "hank@galacticroster.com",
+      "fabpot"
     );
 
-    expect(engineer.getRole()).toEqual(
-      expect.stringContaining("Engineer")
-    );
+    expect(engineer.getRole()).toEqual(expect.stringContaining("Engineer"));
   });
 
   // 8. Engineer constructor should only accept valid github username
   it("getGitHub() should not accept invalid github username in the constructor", () => {
-    const gitHub = "helen - github";
+    const gitHub = "fab - pot";
 
     expect(function () {
-      const engineer = new Engineer(
-        "helen",
-        123,
-        "helen@helen.com",
-        gitHub
-      );
+      const engineer = new Engineer("Hank Sreaves", 999, "hank@galacticroster.com", gitHub);
     }).toThrow(InvalidGitHubUsernameError);
   });
 
   // 9. I should get the gitHub username that I set in the constructor
   test("getGitHub() should return the GitHub username that was set in the constructor", () => {
     // define id source of truth
-    const gitHub = "helen-github";
+    const gitHub = "fabpot";
     // set up the environment to test
-    const engineer = new Engineer(
-      "helen",
-      987,
-      "helen@helen.com",
-      gitHub
-    );
+    const engineer = new Engineer("Hank Sreaves", 999, "hank@galacticroster.com", gitHub);
     // execute the test code
     const result = engineer.getGitHub();
     // compare result to constructor requirements (assert)

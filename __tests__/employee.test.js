@@ -6,18 +6,18 @@ const InvalidIdError = require("../exception/InvalidIdError");
 describe("Employee Test", () => {
   // Employee should be a class
   test("if Employee is a class", () => {
-    const abc = new Employee("helen", 1, "aa@aa.com");
+    const newEmployee = new Employee("Ninfa Cadenhead", 101, "ninfa@galacticroster.com");
 
-    expect(abc).toBeInstanceOf(Object);
-    expect(abc).toBeInstanceOf(Employee);
+    expect(newEmployee).toBeInstanceOf(Object);
+    expect(newEmployee).toBeInstanceOf(Employee);
   });
 
   // 2. getName()
   // Employee constructor should return name
   test("getName() should return name string", () => {
-    const employee = new Employee("Helen Anderson", "9876", "helen@me.com");
+    const employee = new Employee("Ninfa Cadenhead", 101, "ninfa@galacticroster.com");
 
-    expect(employee.getName()).toEqual(expect.stringContaining("Helen Anderson"));
+    expect(employee.getName()).toEqual(expect.stringContaining("Ninfa Cadenhead"));
   });
 
   // getId()
@@ -26,16 +26,16 @@ describe("Employee Test", () => {
     const id = "aaa";
 
     expect(function () {
-      const employee = new Employee("helen", id, "helen@helen.com");
+      const employee = new Employee("Ninfa Cadenhead", id, "ninfa@galacticroster.com");
     }).toThrow(InvalidIdError);
   });
 
   // 4. I should get the id that I set in the constructor
   test("getId() should return the id that was set in the constructor", () => {
     // define id source of truth
-    const id = 123;
+    const id = 101;
     // set up the environment to test
-    const employee = new Employee("helen", id, "helen@helen.com");
+    const employee = new Employee("Ninfa Cadenhead", id, "ninfa@galacticroster.com");
     // execute the test code
     const result = employee.getId();
     // compare result to constructor requirements (assert)
@@ -48,16 +48,16 @@ describe("Employee Test", () => {
     const email = "aaa";
 
     expect(function () {
-      const employee = new Employee("helen", 1, email);
+      const employee = new Employee("Ninfa Cadenhead", 101, email);
     }).toThrow(InvalidEmailError);
   });
 
   // 6. I should get the email that I set in the constructor
   test("getEmail() should return the email that was set in the constructor", () => {
     // define email source of truth
-    const email = "helen@helen.com";
+    const email = "ninfa@galacticroster.com";
     // set up the environment to test
-    const employee = new Employee("helen", 1, email);
+    const employee = new Employee("Ninfa Cadenhead", 101, email);
     // execute the test code
     const result = employee.getEmail();
     // compare result to constructor requirements (assert)
@@ -67,7 +67,7 @@ describe("Employee Test", () => {
   // getRole()
   // 7. I should get the role that I set in the constructor
   test("getRole() should return 'Employee' for Employee class", () => {
-    const employee = new Employee("Helen Anderson", "9876", "helen@me.com");
+    const employee = new Employee("Ninfa Cadenhead", 101, "ninfa@galacticroster.com");
 
     expect(employee.getRole()).toEqual(expect.stringContaining("Employee"));
   });
