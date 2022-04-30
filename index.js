@@ -109,7 +109,7 @@ class Prompt {
               {
                 type: "input",
                 name: "github",
-                message: `What is the engineer's GitHub username?`,
+                message: `What is the engineer's GitHub username? (Required, valid username)`,
                 validate: validateGitHub,
               },
               // Pushes new engineer onto teamRoster array
