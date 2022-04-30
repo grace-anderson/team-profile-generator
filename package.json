@@ -7,7 +7,7 @@
     "lib": "lib"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jest"
   },
   "repository": {
     "type": "git",
@@ -26,6 +26,10 @@
     "express": "^4.18.0",
     "github-username-regex": "^1.0.0",
     "inquirer": "^8.2.4",
-    "jest": "^28.0.2"
+    "jest": "^28.0.2",
+    "nodemon": "^2.0.16"
+  },
+  "devDependencies": {
+    "@types/jest": "^27.4.1"
   }
 }

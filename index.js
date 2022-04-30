@@ -12,6 +12,7 @@ const createHTML = require("./src/createHTML");
 const TeamManager = require("./lib/TeamManager");
 const Intern = require("./lib/Intern");
 const Engineer = require("./lib/Engineer");
+const { validateEmail } = require("./src/validate");
 
 //count to enforce entry of only one team manager
 let count = 0;
@@ -167,23 +168,7 @@ class Prompt {
                 type: "input",
                 name: "email",
                 message: `What is the engineers's email address? (Valid email required)`,
-                validate: (emailInput) => {
-                  const validRegex =
-                    /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
-                  if (emailInput) {
-                    if (emailInput.match(validRegex)) {
-                      return true;
-                    } else {
-                      console.log(
-                        `: ${emailInput} is an invalid email address!`
-                      );
-                      return false;
-                    }
-                  } else {
-                    console.log("Email address is required");
-                    return false;
-                  }
-                },
+                validate: validateEmail,
               },
               {
                 type: "input",
