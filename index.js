@@ -14,6 +14,7 @@ const Intern = require("./lib/Intern");
 const Engineer = require("./lib/Engineer");
 const { validateEmail } = require("./src/validate");
 const { validateNo } = require("./src/validate");
+const { validateGitHub } = require("./src/validate");
 
 //count to enforce entry of only one team manager
 let count = 0;
