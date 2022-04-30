@@ -52,7 +52,7 @@ describe("Employee Test", () => {
     }).toThrow(InvalidEmailError);
   });
 
-  // 6. I should get the id that I set in the constructor
+  // 6. I should get the email that I set in the constructor
   test("getEmail() should return the email that was set in the constructor", () => {
     // define email source of truth
     const email = "helen@helen.com";

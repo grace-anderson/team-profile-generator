@@ -7,7 +7,7 @@ function validateEmail(value) {
 }
 
 
-function validateId(value) {
+function validateNo(value) {
   const validRegex =
   /^\d+$/;
 
@@ -15,5 +15,5 @@ function validateId(value) {
 }
 
 module.exports = {
-  validateEmail, validateId
+  validateEmail, validateNo
 };

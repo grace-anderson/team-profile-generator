@@ -13,7 +13,7 @@ const TeamManager = require("./lib/teamManager");
 const Intern = require("./lib/Intern");
 const Engineer = require("./lib/Engineer");
 const { validateEmail } = require("./src/validate");
-const { validateId } = require("./src/validate");
+const { validateNo } = require("./src/validate");
 
 //count to enforce entry of only one team manager
 let count = 0;
@@ -57,7 +57,7 @@ class Prompt {
                 type: "input",
                 name: "id",
                 message: `What is the team manager's employee ID? (Required, numbers only)`,
-                validate: validateId,
+                validate: validateNo,
               },
               {
                 type: "input",
@@ -69,22 +69,7 @@ class Prompt {
                 type: "input",
                 name: "officeNumber",
                 message: `What is the team manager's office number? (Required, numbers only)`,
-                validate: (officeNumber) => {
-                  const numberRegex = /^\d+$/;
-                  if (officeNumber) {
-                    if (officeNumber.match(numberRegex)) {
-                      return true;
-                    } else {
-                      console.log(
-                        `: ${officeNumber} is an invalid office number. The office number should contain numbers only`
-                      );
-                      return false;
-                    }
-                  } else {
-                    console.log("Team manager's office number is required");
-                    return false;
-                  }
-                },
+                validate: validateNo, 
               },
             ])
             // Push new team manager onto teamRoster array
@@ -117,7 +102,7 @@ class Prompt {
                 type: "input",
                 name: "id",
                 message: `What is the engineer's employee ID? (Required, numbers only)`,
-                validate: validateId,
+                validate: validateNo,
               },
               {
                 type: "input",
@@ -174,7 +159,7 @@ class Prompt {
                 type: "input",
                 name: "id",
                 message: `What is the intern's employee ID? (Required, numbers only)`,
-                validate: validateId,
+                validate: validateNo,
               },
               {
                 type: "input",
