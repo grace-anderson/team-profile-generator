@@ -7,16 +7,16 @@ const fs = require("fs");
 //require local modules
 const requiredQuestions = require("./src/requiredQuestions");
 const createHTML = require("./src/createHTML");
+const { validateEmail } = require("./src/validate");
+const { validateNo } = require("./src/validate");
+const { validateGitHub } = require("./src/validate");
 
 //import sub-classes
 const TeamManager = require("./lib/teamManager");
 const Intern = require("./lib/Intern");
 const Engineer = require("./lib/Engineer");
-const { validateEmail } = require("./src/validate");
-const { validateNo } = require("./src/validate");
-const { validateGitHub } = require("./src/validate");
 
-//count to enforce entry of only one team manager
+//count to enforce entry of one team manager only
 let count = 0;
 
 // Prompt class collects questions and pushes them onto teamRoster array
@@ -33,6 +33,48 @@ class Prompt {
     return this.teamRoster;
   }
 
+  teamManagerQuestions() {
+    inquirer
+      .prompt([
+        {
+          type: "input",
+          name: "name",
+          message: `What is the team manager's name? (Required)`,
+          validate: requiredQuestions("Team manager's name is required"),
+        },
+        {
+          type: "input",
+          name: "id",
+          message: `What is the team manager's employee ID? (Required, numbers only)`,
+          validate: validateNo,
+        },
+        {
+          type: "input",
+          name: "email",
+          message: `What is the team manager's email address? (Valid email required)`,
+          validate: validateEmail,
+        },
+        {
+          type: "input",
+          name: "officeNumber",
+          message: `What is the team manager's office number? (Required, numbers only)`,
+          validate: validateNo,
+        },
+      ])
+      // Push new team manager onto teamRoster array
+      .then((answers) => {
+        let newTeamManager = new TeamManager(
+          answers.name,
+          answers.id,
+          answers.email,
+          answers.officeNumber
+        );
+        this.teamRoster.push(newTeamManager);
+        // Sends user to menu to select engineer or intern
+        this.questions();
+      });
+  }
+
   questions() {
     inquirer
       .prompt({
@@ -40,57 +82,10 @@ class Prompt {
         name: "employeeType",
         message:
           "Choose one employee type to add or select Exit to generate roster.",
-        choices: ["Team Manager", "Engineer", "Intern", "Exit"],
+        choices: ["Engineer", "Intern", "Exit"],
       })
       .then((choice) => {
-        if (choice.employeeType === "Team Manager" && count == 0) {
-          //add one to count
-          count++;
-          inquirer
-            .prompt([
-              {
-                type: "input",
-                name: "name",
-                message: `What is the team manager's name? (Required)`,
-                validate: requiredQuestions("Team manager's name is required"),
-              },
-              {
-                type: "input",
-                name: "id",
-                message: `What is the team manager's employee ID? (Required, numbers only)`,
-                validate: validateNo,
-              },
-              {
-                type: "input",
-                name: "email",
-                message: `What is the team manager's email address? (Valid email required)`,
-                validate: validateEmail,
-              },
-              {
-                type: "input",
-                name: "officeNumber",
-                message: `What is the team manager's office number? (Required, numbers only)`,
-                validate: validateNo, 
-              },
-            ])
-            // Push new team manager onto teamRoster array
-            .then((answers) => {
-              let newTeamManager = new TeamManager(
-                answers.name,
-                answers.id,
-                answers.email,
-                answers.officeNumber
-              );
-              this.teamRoster.push(newTeamManager);
-              // Sends user back to menu
-              this.questions();
-            });
-        } else if (choice.employeeType === "Team Manager" && count > 0) {
-          console.log(
-            "One team manager only is required. Select Engineer or Intern"
-          );
-          this.questions();
-        } else if (choice.employeeType === "Engineer") {
+        if (choice.employeeType === "Engineer") {
           inquirer
             .prompt([
               {
@@ -170,24 +165,26 @@ class Prompt {
               // Sends user back to menu
               this.questions();
             });
-        } else if (choice.employeeType === "Exit") {
-          if (count === 0) {
-            console.log(
-              "One team manager is required. Select Team Manager to add"
-            );
-            this.questions();
-          } else {
-            //write html
-            const html = createHTML(this.getTeamRoster());
+        } else {
+          const html = createHTML(this.getTeamRoster());
+          new Promise((res, rej) => {
             fs.writeFile("./dist/index.html", html, (err) => {
-              if (err) throw new Error(err);
-              console.log("index.html created");
+              if (err) {
+                rej(err);
+                return;
+              }
+              res({
+                ok: true,
+                message: console.log(
+                  `Team roster created. Go to dist/index.html to view.`
+                ),
+              });
             });
-          }
+          });
         }
       });
   }
 }
 
 const prompt = new Prompt();
-prompt.questions();
+prompt.teamManagerQuestions();
