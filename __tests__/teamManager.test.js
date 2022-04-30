@@ -7,7 +7,7 @@ const InvalidOfficeNumberError = require("../exception/InvalidOfficeNumberError"
 describe("TeamManager Test", () => {
   // TeamManager should be a class
   test("if Team Manager is a class", () => {
-    const abc = new TeamManager("helen", 1, "aa@aa.com");
+    const abc = new TeamManager("helen", 1, "aa@aa.com", 999);
 
     expect(abc).toBeInstanceOf(Object);
     expect(abc).toBeInstanceOf(TeamManager);
@@ -19,7 +19,8 @@ describe("TeamManager Test", () => {
     const teamManager = new TeamManager(
       "Helen Anderson",
       "9876",
-      "helen@me.com"
+      "helen@me.com",
+     999
     );
 
     expect(teamManager.getName()).toEqual(
@@ -33,7 +34,7 @@ describe("TeamManager Test", () => {
     const id = "aaa";
 
     expect(function () {
-      const teamManager = new TeamManager("helen", id, "helen@helen.com");
+      const teamManager = new TeamManager("helen", id, "helen@helen.com", 999);
     }).toThrow(InvalidIdError);
   });
 
@@ -42,7 +43,7 @@ describe("TeamManager Test", () => {
     // define id source of truth
     const id = 123;
     // set up the environment to test
-    const teamManager = new TeamManager("helen", id, "helen@helen.com");
+    const teamManager = new TeamManager("helen", id, "helen@helen.com", 999);
     // execute the test code
     const result = teamManager.getId();
     // compare result to constructor requirements (assert)
@@ -55,7 +56,7 @@ describe("TeamManager Test", () => {
     const email = "aaa";
 
     expect(function () {
-      const teamManager = new TeamManager("helen", 1, email);
+      const teamManager = new TeamManager("helen", 1, email, 999);
     }).toThrow(InvalidEmailError);
   });
 
@@ -64,7 +65,7 @@ describe("TeamManager Test", () => {
     // define email source of truth
     const email = "helen@helen.com";
     // set up the environment to test
-    const teamManager = new TeamManager("helen", 1, email);
+    const teamManager = new TeamManager("helen", 1, email, 999);
     // execute the test code
     const result = teamManager.getEmail();
     // compare result to constructor requirements (assert)
@@ -77,7 +78,8 @@ describe("TeamManager Test", () => {
     const teamManager = new TeamManager(
       "Helen Anderson",
       "9876",
-      "helen@me.com"
+      "helen@me.com",
+      999
     );
 
     expect(teamManager.getRole()).toEqual(
