@@ -26,7 +26,7 @@ describe("Employee Test", () => {
   
   // getEmail()
   // i should get the email that i set in the constructor
-  test("returnEmail() should return the email that was set in the constructor", () => {
+  test("getEmail() should return the email that was set in the constructor", () => {
     // define the source of truth
     const email = 'heln@helen.com'
     // set up the env
@@ -34,7 +34,7 @@ describe("Employee Test", () => {
 
 
     // exe the code
-    const result = employee.returnEmail();
+    const result = employee.getEmail();
 
     // compare (assert)
     expect(result).toBe(email);

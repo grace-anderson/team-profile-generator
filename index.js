@@ -17,18 +17,18 @@ const { validateEmail } = require("./src/validate");
 //count to enforce entry of only one team manager
 let count = 0;
 
-// Prompt class collects questions and pushes them onto teamArray
+// Prompt class collects questions and pushes them onto teamRoster array
 class Prompt {
   constructor() {
-    this.teamArray = [];
+    this.teamRoster = [];
   }
 
   /**
    * @returns array
    */
 
-  getTeamArray() {
-    return this.teamArray;
+  getTeamRoster() {
+    return this.teamRoster;
   }
 
   questions() {
@@ -54,16 +54,16 @@ class Prompt {
               },
               {
                 type: "input",
-                name: "employeeId",
+                name: "id",
                 message: `What is the team manager's employee ID? (Required, numbers only)`,
-                validate: (employeeId) => {
+                validate: (id) => {
                   const numberRegex = /^\d+$/;
-                  if (employeeId) {
-                    if (employeeId.match(numberRegex)) {
+                  if (id) {
+                    if (id.match(numberRegex)) {
                       return true;
                     } else {
                       console.log(
-                        `: ${employeeId} is an invalid employee ID. The employee ID should contain numbers only`
+                        `: ${id} is an invalid employee ID. The employee ID should contain numbers only`
                       );
                       return false;
                     }
@@ -97,16 +97,16 @@ class Prompt {
               },
               {
                 type: "input",
-                name: "officeNo",
+                name: "officeNumber",
                 message: `What is the team manager's office number? (Required, numbers only)`,
-                validate: (officeNo) => {
+                validate: (officeNumber) => {
                   const numberRegex = /^\d+$/;
-                  if (officeNo) {
-                    if (officeNo.match(numberRegex)) {
+                  if (officeNumber) {
+                    if (officeNumber.match(numberRegex)) {
                       return true;
                     } else {
                       console.log(
-                        `: ${officeNo} is an invalid office number. The office number should contain numbers only`
+                        `: ${officeNumber} is an invalid office number. The office number should contain numbers only`
                       );
                       return false;
                     }
@@ -117,15 +117,15 @@ class Prompt {
                 },
               },
             ])
-            // Push new team manager onto teamArray
+            // Push new team manager onto teamRoster array
             .then((answers) => {
               let newTeamManager = new TeamManager(
                 answers.name,
-                answers.employeeId,
+                answers.id,
                 answers.email,
-                answers.officeNo
+                answers.officeNumber,
               );
-              this.teamArray.push(newTeamManager);
+              this.teamRoster.push(newTeamManager);
               // Sends user back to menu
               this.questions();
             });
@@ -145,16 +145,16 @@ class Prompt {
               },
               {
                 type: "input",
-                name: "employeeId",
+                name: "id",
                 message: `What is the engineer's employee ID? (Required, numbers only)`,
-                validate: (employeeId) => {
+                validate: (id) => {
                   const numberRegex = /^\d+$/;
-                  if (employeeId) {
-                    if (employeeId.match(numberRegex)) {
+                  if (id) {
+                    if (id.match(numberRegex)) {
                       return true;
                     } else {
                       console.log(
-                        `: ${employeeId} is an invalid employee ID. The employee ID should contain numbers only`
+                        `: ${id} is an invalid employee ID. The employee ID should contain numbers only`
                       );
                       return false;
                     }
@@ -193,16 +193,16 @@ class Prompt {
                   }
                 },
               },
-              // Pushes new engineer into teamArray
+              // Pushes new engineer onto teamRoster array
             ])
             .then((answers) => {
               const newEngineer = new Engineer(
                 answers.name,
-                answers.employeeId,
+                answers.id,
                 answers.email,
                 answers.github
               );
-              this.teamArray.push(newEngineer);
+              this.teamRoster.push(newEngineer);
               // Sends user back to menu
               this.questions();
             });
@@ -220,16 +220,16 @@ class Prompt {
                 name: "id",
                 message: "Please enter the intern's employee id",
                 type: "input",
-                name: "employeeId",
+                name: "id",
                 message: `What is the intern's employee ID? (Required, numbers only)`,
-                validate: (employeeId) => {
+                validate: (id) => {
                   const numberRegex = /^\d+$/;
-                  if (employeeId) {
-                    if (employeeId.match(numberRegex)) {
+                  if (id) {
+                    if (id.match(numberRegex)) {
                       return true;
                     } else {
                       console.log(
-                        `: ${employeeId} is an invalid employee ID. The employee ID should contain numbers only`
+                        `: ${id} is an invalid employee ID. The employee ID should contain numbers only`
                       );
                       return false;
                     }
@@ -267,16 +267,16 @@ class Prompt {
                 message: `What is the intern's school (Required)`,
                 validate: requiredQuestions("Intern's school is required"),
               },
-              // Push new intern onto teamArray
+              // Push new intern onto teamRoster array
             ])
             .then((answers) => {
               const newIntern = new Intern(
                 answers.name,
-                answers.employeeId,
+                answers.id,
                 answers.email,
                 answers.school
               );
-              this.teamArray.push(newIntern);
+              this.teamRoster.push(newIntern);
               // Sends user back to menu
               this.questions();
             });
@@ -288,10 +288,9 @@ class Prompt {
             this.questions();
           } else {
             //write html
-            const html = createHTML(this.getTeamArray());
+            const html = createHTML(this.getTeamRoster());
             fs.writeFile("./dist/index.html", html, (err) => {
               if (err) throw new Error(err);
-
               console.log("index.html created");
             });
           }

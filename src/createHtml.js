@@ -1,15 +1,15 @@
 // filter team array by each role, push filtered role onto cards array.
 // createEmployeeCards renders cards on html
-const createEmployeeCards = (teamArray) => {
+const createEmployeeCards = (teamRoster) => {
   let cards = [];
-  const teamManagerRole = teamArray.filter((team) => {
-    return team.returnRole() === "Team Manager";
+  const teamManagerRole = teamRoster.filter((team) => {
+    return team.getRole() === "Team Manager";
   });
-  const engineerRole = teamArray.filter((team) => {
-    return team.returnRole() === "Engineer";
+  const engineerRole = teamRoster.filter((team) => {
+    return team.getRole() === "Engineer";
   });
-  const internRole = teamArray.filter((team) => {
-    return team.returnRole() === "Intern";
+  const internRole = teamRoster.filter((team) => {
+    return team.getRole() === "Intern";
   });
   if (teamManagerRole) {
     cards.push(createTeamManager(teamManagerRole));
@@ -33,13 +33,13 @@ const createTeamManager = (teamManagerRole) => {
         <div class="card shadow-lg mb-5" style="width: 18rem;">
           <div class="card-body pt-0 ps-0 pe-0">
             <div class="text-white bg-success px-4 pt-1 pb-2">
-              <h2 class="card-title lh-base">${teamManager.returnName()}</h2>
+              <h2 class="card-title lh-base">${teamManager.getName()}</h2>
               <h4 class="card-title"><i class="bi bi-briefcase-fill"></i>  Team Manager</h4>
             </div>
             <ul class="list-group list-group-flush px-2">
-              <li class="list-group-item">Id: ${teamManager.returnEmployeeId()}</li>
-              <li class="list-group-item">Email: <a href="mailto:">${teamManager.returnEmail()}</a></li>
-              <li class="list-group-item">Office number: ${teamManager.returnOfficeNo()}</li>
+              <li class="list-group-item">Id: ${teamManager.getId()}</li>
+              <li class="list-group-item">Email: <a href="mailto:">${teamManager.getEmail()}</a></li>
+              <li class="list-group-item">Office number: ${teamManager.getOfficeNumber()}</li>
             </ul>
           </div>
         </div>
@@ -47,9 +47,6 @@ const createTeamManager = (teamManagerRole) => {
     })
     .join("");
 };
-
-
-
 
 const createEngineer = (engineerRole) => {
   return engineerRole
@@ -59,13 +56,13 @@ const createEngineer = (engineerRole) => {
         <div class="card shadow-lg mb-5" style="width: 18rem;">
           <div class="card-body pt-0 ps-0 pe-0">
             <div class="text-white bg-info px-4 pt-1 pb-2">
-              <h2 class="card-title lh-base">${engineer.returnName()}</h2>
+              <h2 class="card-title lh-base">${engineer.getName()}</h2>
               <h4 class="card-title"><i class="bi bi-gear-fill"></i>  Engineer</h4>
             </div>
             <ul class="list-group list-group-flush px-2">
-              <li class="list-group-item">Id: ${engineer.returnEmployeeId()}</li>
-              <li class="list-group-item">Email: <a href="mailto:">${engineer.returnEmail()}</a></li>
-              <li class="list-group-item">GitHub: <a target="_blank" href="https://github.com/${engineer.returnGitHub()}">${engineer.returnGitHub()}</a></li>
+              <li class="list-group-item">Id: ${engineer.getId()}</li>
+              <li class="list-group-item">Email: <a href="mailto:">${engineer.getEmail()}</a></li>
+              <li class="list-group-item">GitHub: <a target="_blank" href="https://github.com/${engineer.getGitHub()}">${engineer.getGitHub()}</a></li>
             </ul>
           </div>
         </div>
@@ -82,13 +79,13 @@ const createIntern = (internRole) => {
         <div class="card shadow-lg mb-5" style="width: 18rem;">
           <div class="card-body pt-0 ps-0 pe-0">
             <div class="text-white bg-danger px-4 pt-1 pb-2">
-              <h2 class="card-title lh-base">${intern.returnName()}</h2>
+              <h2 class="card-title lh-base">${intern.getName()}</h2>
               <h4 class="card-title"><i class="bi bi-book-fill"></i>  Intern</h4>
             </div>
             <ul class="list-group list-group-flush px-2">
-              <li class="list-group-item">Id: ${intern.returnEmployeeId()}</li>
-              <li class="list-group-item">Email: <a href="mailto:">${intern.returnEmail()}</a></li>
-              <li class="list-group-item">School: ${intern.returnSchool()}</li>
+              <li class="list-group-item">Id: ${intern.getId()}</li>
+              <li class="list-group-item">Email: <a href="mailto:">${intern.getEmail()}</a></li>
+              <li class="list-group-item">School: ${intern.getSchool()}</li>
             </ul>
           </div>
         </div>
