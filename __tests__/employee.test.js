@@ -2,6 +2,7 @@ const Employee = require("../lib/employee");
 const InvalidEmailError = require("../exception/InvalidEmailError");
 const InvalidIdError = require("../exception/InvalidIdError");
 
+//1. Employee class
 describe("Employee Test", () => {
   // Employee should be a class
   test("if Employee is a class", () => {
@@ -11,17 +12,17 @@ describe("Employee Test", () => {
     expect(abc).toBeInstanceOf(Employee);
   });
 
-  // getRole()
-  // Employee constructor should set role as "employee"
-  test(`getRole() should return "Employee" for Employee class, when role not overridden by sub-class role`, () => {
+  // 2. getName()
+  // Employee constructor should return name
+  test("getName() should return name string", () => {
     const employee = new Employee("Helen Anderson", "9876", "helen@me.com");
 
-    expect(employee.getRole()).toEqual(expect.stringContaining("Employee"));
+    expect(employee.getName()).toEqual(expect.stringContaining("Helen Anderson"));
   });
 
   // getId()
-  // Employee constructor should only accept valid id
-  it("should not accept invalid id in the constructor", () => {
+  // 3. Employee constructor should only accept valid id
+  it("getID() should not accept invalid id in the constructor", () => {
     const id = "aaa";
 
     expect(function () {
@@ -29,7 +30,7 @@ describe("Employee Test", () => {
     }).toThrow(InvalidIdError);
   });
 
-  // I should get the id that I set in the constructor
+  // 4. I should get the id that I set in the constructor
   test("getId() should return the id that was set in the constructor", () => {
     // define id source of truth
     const id = 123;
@@ -41,12 +42,9 @@ describe("Employee Test", () => {
     expect(result).toBe(id);
   });
 
-  // getName()
-  // i should get the name that i set in the constructor
-
   // getEmail()
-  // Employee constructor should only accept valid email
-  it("should not accept invalid email in the constructor", () => {
+  // 5. Employee constructor should only accept valid email
+  it("getEmail() should not accept invalid email in the constructor", () => {
     const email = "aaa";
 
     expect(function () {
@@ -54,7 +52,7 @@ describe("Employee Test", () => {
     }).toThrow(InvalidEmailError);
   });
 
-  // I should get the email that I set in the constructor
+  // 6. I should get the id that I set in the constructor
   test("getEmail() should return the email that was set in the constructor", () => {
     // define email source of truth
     const email = "helen@helen.com";
@@ -64,5 +62,13 @@ describe("Employee Test", () => {
     const result = employee.getEmail();
     // compare result to constructor requirements (assert)
     expect(result).toBe(email);
+  });
+
+  // getRole()
+  // 7. I should get the role that I set in the constructor
+  test("getRole() should return 'Employee' for Employee class", () => {
+    const employee = new Employee("Helen Anderson", "9876", "helen@me.com");
+
+    expect(employee.getRole()).toEqual(expect.stringContaining("Employee"));
   });
 });
