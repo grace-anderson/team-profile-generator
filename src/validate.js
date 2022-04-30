@@ -15,5 +15,5 @@ function validateId(value) {
 }
 
 module.exports = {
-  validateEmail, validateId,
+  validateEmail, validateId
 };

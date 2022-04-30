@@ -9,7 +9,7 @@ const requiredQuestions = require("./src/requiredQuestions");
 const createHTML = require("./src/createHTML");
 
 //import sub-classes
-const TeamManager = require("./lib/TeamManager");
+const TeamManager = require("./lib/teamManager");
 const Intern = require("./lib/Intern");
 const Engineer = require("./lib/Engineer");
 const { validateEmail } = require("./src/validate");
@@ -63,23 +63,7 @@ class Prompt {
                 type: "input",
                 name: "email",
                 message: `What is the team manager's email address? (Valid email required)`,
-                validate: (emailInput) => {
-                  const validRegex =
-                    /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
-                  if (emailInput) {
-                    if (emailInput.match(validRegex)) {
-                      return true;
-                    } else {
-                      console.log(
-                        `: ${emailInput} is an invalid email address!`
-                      );
-                      return false;
-                    }
-                  } else {
-                    console.log("Email address is required");
-                    return false;
-                  }
-                },
+                validate: validateEmail,
               },
               {
                 type: "input",
@@ -109,7 +93,7 @@ class Prompt {
                 answers.name,
                 answers.id,
                 answers.email,
-                answers.officeNumber,
+                answers.officeNumber
               );
               this.teamRoster.push(newTeamManager);
               // Sends user back to menu
@@ -133,22 +117,7 @@ class Prompt {
                 type: "input",
                 name: "id",
                 message: `What is the engineer's employee ID? (Required, numbers only)`,
-                validate: (id) => {
-                  const numberRegex = /^\d+$/;
-                  if (id) {
-                    if (id.match(numberRegex)) {
-                      return true;
-                    } else {
-                      console.log(
-                        `: ${id} is an invalid employee ID. The employee ID should contain numbers only`
-                      );
-                      return false;
-                    }
-                  } else {
-                    console.log("Employee ID is required");
-                    return false;
-                  }
-                },
+                validate: validateId,
               },
               {
                 type: "input",
@@ -204,48 +173,14 @@ class Prompt {
               {
                 type: "input",
                 name: "id",
-                message: "Please enter the intern's employee id",
-                type: "input",
-                name: "id",
                 message: `What is the intern's employee ID? (Required, numbers only)`,
-                validate: (id) => {
-                  const numberRegex = /^\d+$/;
-                  if (id) {
-                    if (id.match(numberRegex)) {
-                      return true;
-                    } else {
-                      console.log(
-                        `: ${id} is an invalid employee ID. The employee ID should contain numbers only`
-                      );
-                      return false;
-                    }
-                  } else {
-                    console.log("Employee ID is required");
-                    return false;
-                  }
-                },
+                validate: validateId,
               },
               {
                 type: "input",
                 name: "email",
                 message: `What is the intern's email address? (Valid email required)`,
-                validate: (emailInput) => {
-                  const validRegex =
-                    /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
-                  if (emailInput) {
-                    if (emailInput.match(validRegex)) {
-                      return true;
-                    } else {
-                      console.log(
-                        `: ${emailInput} is an invalid email address!`
-                      );
-                      return false;
-                    }
-                  } else {
-                    console.log("Email address is required");
-                    return false;
-                  }
-                },
+                validate: validateEmail,
               },
               {
                 type: "input",
