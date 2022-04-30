@@ -114,24 +114,7 @@ class Prompt {
                 type: "input",
                 name: "github",
                 message: `What is the engineer's GitHub username?`,
-                validate: (githubInput) => {
-                  const githubRegex =
-                    /^[a-z\d](?:[a-z\d]|-(?=[a-z\d])){0,38}$/i;
-
-                  if (githubInput) {
-                    if (githubInput.match(githubRegex)) {
-                      return true;
-                    } else {
-                      console.log(
-                        `: ${githubInput} is an invalid GitHub username!`
-                      );
-                      return false;
-                    }
-                  } else {
-                    console.log("GitHub username is required");
-                    return false;
-                  }
-                },
+                validate: validateGitHub,
               },
               // Pushes new engineer onto teamRoster array
             ])

@@ -14,6 +14,15 @@ function validateNo(value) {
   return validRegex.test(value);
 }
 
+function validateGitHub(value) {
+  const validRegex =
+    /^[a-z\d](?:[a-z\d]|-(?=[a-z\d])){0,38}$/i;
+
+  return validRegex.test(value);
+}
+
 module.exports = {
-  validateEmail, validateNo
+  validateEmail, validateNo, validateGitHub
 };
+
+
