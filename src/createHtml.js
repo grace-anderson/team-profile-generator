@@ -38,7 +38,7 @@ const createTeamManager = (teamManagerRole) => {
             </div>
             <ul class="list-group list-group-flush px-2">
               <li class="list-group-item">Id: ${teamManager.getId()}</li>
-              <li class="list-group-item">Email: <a href="mailto:">${teamManager.getEmail()}</a></li>
+              <li class="list-group-item">Email: <a href="mailto:${teamManager.getEmail()}">${teamManager.getEmail()}</a></li>
               <li class="list-group-item">Office number: ${teamManager.getOfficeNumber()}</li>
             </ul>
           </div>
@@ -61,7 +61,7 @@ const createEngineer = (engineerRole) => {
             </div>
             <ul class="list-group list-group-flush px-2">
               <li class="list-group-item">Id: ${engineer.getId()}</li>
-              <li class="list-group-item">Email: <a href="mailto:">${engineer.getEmail()}</a></li>
+              <li class="list-group-item">Email: <a href="mailto:${engineer.getEmail()}">${engineer.getEmail()}</a></li>
               <li class="list-group-item">GitHub: <a target="_blank" href="https://github.com/${engineer.getGitHub()}">${engineer.getGitHub()}</a></li>
             </ul>
           </div>
@@ -84,7 +84,7 @@ const createIntern = (internRole) => {
             </div>
             <ul class="list-group list-group-flush px-2">
               <li class="list-group-item">Id: ${intern.getId()}</li>
-              <li class="list-group-item">Email: <a href="mailto:">${intern.getEmail()}</a></li>
+              <li class="list-group-item">Email: <a href="mailto:${intern.getEmail()}">${intern.getEmail()}</a></li>
               <li class="list-group-item">School: ${intern.getSchool()}</li>
             </ul>
           </div>
