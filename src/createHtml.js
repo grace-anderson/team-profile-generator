@@ -1,3 +1,9 @@
+const { Prompt } = require("../index");
+
+const prompt = new Prompt();
+const teamRosterInfo = prompt.getTeamRoster();
+console.log("teamRosterInfo", teamRosterInfo);
+
 // filter team array by each role, push filtered role onto cards array.
 // createEmployeeCards renders cards on html
 const createEmployeeCards = (teamRoster) => {
