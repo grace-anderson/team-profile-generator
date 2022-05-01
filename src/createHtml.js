@@ -1,9 +1,3 @@
-const { Prompt } = require("../index");
-
-const prompt = new Prompt();
-const teamRosterInfo = prompt.getTeamRoster();
-console.log("teamRosterInfo", teamRosterInfo);
-
 // filter team array by each role, push filtered role onto cards array.
 // createEmployeeCards renders cards on html
 const createEmployeeCards = (teamRoster) => {
@@ -106,20 +100,15 @@ module.exports = (cards) => {
 <!DOCTYPE html>
 <html lang="en">
   <head>
-
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Team Roster</title>
     
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
-
   </head>
-
   <body>
-
     <header class="container-fluid bg-primary py-1">
         <h1 class="display-3 text-center fw-bolder lh-lg text-white">TEAM ROSTER</h1>
     </header>
@@ -128,9 +117,7 @@ module.exports = (cards) => {
           ${createEmployeeCards(cards)}
       </div>
     </main> 
-
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
-
   </body>
 </html>
     `;

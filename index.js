@@ -16,6 +16,9 @@ const TeamManager = require("./lib/teamManager");
 const Intern = require("./lib/Intern");
 const Engineer = require("./lib/Engineer");
 
+//count to enforce entry of one team manager only
+let count = 0;
+
 // Prompt class collects questions and pushes them onto teamRoster array
 class Prompt {
   constructor() {
@@ -70,7 +73,6 @@ class Prompt {
         // Sends user to menu to select engineer or intern
         this.questions();
       });
-      return this.teamRoster;
   }
 
   questions() {
