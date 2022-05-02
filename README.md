@@ -16,7 +16,7 @@
   - [Screenshots](#screenshots)
 
 ## Project Description 
-Every leader of a software development team must be able to plan a team roster. This Node.js command-line application takes in information about employees in a software engineering team, then generates an HTML webpage that displays summaries for each person. The roster can be easily recreated for changes in team manager, engineers or interns. In addition, this project demonstrates unit testing that should be a core practice of a software team, ensuring that code is maintainable. Go to [GitHub](https://github.com/grace-anderson/team-profile-generator) for the Team Profile Generator code.
+Every leader of a software development team is tasked with planning their team roster. This Node.js command-line application takes in information about employees in a software engineering team, then generates a HTML webpage titled 'Team Roster' that displays summaries for each person. The team roster can easily be recreated if there are updates to people in team manager, engineer or intern roles. In addition, this project demonstrates unit testing, a core practice of any productive software team, which ensures that code is maintainable. Go to [GitHub](https://github.com/grace-anderson/team-profile-generator) for the Team Profile Generator code.
 
 ## Technologies
 * JavaScript
@@ -29,15 +29,16 @@ Every leader of a software development team must be able to plan a team roster. 
 
 ## Installation
 * You need a [GitHub](https://github.com/) account to access the code
-* Install the Team Member generator by forking the [team profile generator GitHub repository](https://github.com/grace-anderson/team-profile-generator) and then cloning the fork to your local repository.
+* Install the Team Profile Generator by forking the [team profile generator GitHub repository](https://github.com/grace-anderson/team-profile-generator) and then cloning the fork to your local repository.
 * Then use your favourite command line tool (e.g. Visual Studio) to cd into the app folder. 
-* Install the necessary packages `npm install`
-* Run the app on the command line `node index.js`
+* Install the necessary packages: `npm i`  ("i" for install)
+* Run the app on the command line: `node index.js`
 
 ## Usage
-* Watch this TODO [video](https://drive.google.com/file/d/15Pljiea03gQkiEsWdFbSY-if3CEJi5Oj/view?usp=sharing) for instructions and a demonstration of the application's functionality
+* Watch this [video](https://drive.google.com/file/d/1sZfav2MEzx4o1VpuHwFeVEkxEFWzGHkk/view?usp=sharing) for instructions to run unit tests and generate the team roster webpage.
+* Watch this [video](https://drive.google.com/file/d/1E4A8J9sGbh03yh-SlnRoJ1F83QLEUQNg/view?usp=sharing) for full instructions, including explanation of the unit tests, and a demonstration of the application's functionality
 * See [screenshots](#screenshots) below depicting more of the application's functionality
-* You can also find sample of the generated HTML file in this repo TODO ([README-sample.md](readme-generator/README-sample.md)) created using the Generator
+* You can also find sample of the generated HTML file in this repo: ([./sample/index.html](./sample/index.html)) created using the Generator
 * After creating your initial team profile, you may return to the generator to recreate the profile as employees change or when a new roster is needed.  
 * You may contribute to the [Team Profile Generator project](https://github.com/grace-anderson/team-profile-generator) following the Contribution Guidelines below.
 
@@ -46,7 +47,7 @@ License covering this application: [MIT](https://opensource.org/licenses/MIT)
 
 ## Contribution Guidelines
 * Contributions are welcome.
-* The code is located in the [team member generator repository](https://github.com/grace-anderson/team-profile-generator) 
+* The code is located in the [team profile generator repository](https://github.com/grace-anderson/team-profile-generator) 
 * To contribute, open a new issue describing your proposed enhancement or fix.
   * Before contributing, browse through the open issues to see if your issue already exists or if there is an issue you might be able to solve. 
   * If you're a newbie dev, start contributing by looking for issues labelled "good first issue"
@@ -58,7 +59,7 @@ License covering this application: [MIT](https://opensource.org/licenses/MIT)
 
 ## Test Instructions
 ### Unit Testing
-Run unit tests on the command line `npm run test`
+Run unit tests on the command line: `npm run test`
 
 ### Feature Testing
 Test using the following User Story and Acceptance Criteria to validate the features of the Team Profile Generator app.
@@ -96,16 +97,8 @@ See more of Helen Anderson's work on [GitHub](https://github.com/grace-anderson)
 
 ## Screenshots
 
-TODO
+### Gif showing how clicking the email link opens the email app, and populates the 'To:' field with clicked email address 
+![Clicking email link open email app and puts email in To field](/img/email-opens-email-app.gif)
 
-### Screenshot showing completed prompts with success message. Text entered in text editor is confirmed as saved in the app by 'Received' stated by the prompt
-![Screenshot showing completed prompts with success message. Text entered in text editor is confirmed as saved in the app by 'Received' stated by the prompt](/img/completed-prompts.png)
-
-### Text formatted in markdown entered into the text editor
-![Text formatted in markdown entered into the text editor](/img/formatted-markdown-in-text-editor.png)
-
-### Saving text entered into the text editor
-![Saving text entered into the text editor](/img/saving-text-entered-in-text-editor.png)
-
-### Preview of generated README showing license badge
-![Preview of generated README showing license badge](/img/readme-preview-with-license-badge.png)
+### Gif showing how clicking engineers' gitHub links opens a gitHub profile
+![Clicking gitHub link opens gitHub profile](/img/gitHub-link-opens-github-profile.gif)
