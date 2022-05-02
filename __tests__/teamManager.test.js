@@ -13,7 +13,6 @@ describe("TeamManager Test", () => {
       "ninfa@galacticroster.com",
       12345
     );
-
     expect(newTeamManager).toBeInstanceOf(Object);
     expect(newTeamManager).toBeInstanceOf(TeamManager);
   });
@@ -27,7 +26,6 @@ describe("TeamManager Test", () => {
       "ninfa@galacticroster.com",
       12345
     );
-
     expect(teamManager.getName()).toEqual(
       expect.stringContaining("Ninfa Cadenhead")
     );
@@ -37,7 +35,6 @@ describe("TeamManager Test", () => {
   // 3. TeamManager constructor should only accept valid id
   it("getID() should not accept invalid id in the constructor", () => {
     const id = "aaa";
-
     expect(function () {
       const teamManager = new TeamManager(
         "Ninfa Cadenhead",
@@ -50,18 +47,14 @@ describe("TeamManager Test", () => {
 
   // 4. I should get the id that I set in the constructor
   test("getId() should return the id that was set in the constructor", () => {
-    // define id source of truth
     const id = 101;
-    // set up the environment to test
     const teamManager = new TeamManager(
       "Ninfa Cadenhead",
       id,
       "ninfa@galacticroster.com",
       12345
     );
-    // execute the test code
     const result = teamManager.getId();
-    // compare result to constructor requirements (assert)
     expect(result).toBe(id);
   });
 
@@ -77,13 +70,9 @@ describe("TeamManager Test", () => {
 
   // 6. I should get the email that I set in the constructor
   test("getEmail() should return the email that was set in the constructor", () => {
-    // define email source of truth
     const email = "ninfa@galacticroster.com";
-    // set up the environment to test
     const teamManager = new TeamManager("Ninfa Cadenhead", 101, email, 12345);
-    // execute the test code
     const result = teamManager.getEmail();
-    // compare result to constructor requirements (assert)
     expect(result).toBe(email);
   });
 
@@ -96,7 +85,6 @@ describe("TeamManager Test", () => {
       "ninfa@galacticroster.com",
       12345
     );
-
     expect(teamManager.getRole()).toEqual(
       expect.stringContaining("Team Manager")
     );
@@ -105,7 +93,6 @@ describe("TeamManager Test", () => {
   // 8. TeamManager constructor should only accept valid office number
   it("getOfficeNumber() should not accept invalid office number in the constructor", () => {
     const officeNumber = "aaa";
-
     expect(function () {
       const teamManager = new TeamManager(
         "Ninfa Cadenhead",
@@ -118,18 +105,14 @@ describe("TeamManager Test", () => {
 
   // 9. I should get the office number that I set in the constructor
   test("getOfficeNumber() should return the officeNumber that was set in the constructor", () => {
-    // define id source of truth
     const officeNumber = 12345;
-    // set up the environment to test
     const teamManager = new TeamManager(
       "Ninfa Cadenhead",
       101,
       "ninfa@galacticroster.com",
       officeNumber
     );
-    // execute the test code
     const result = teamManager.getOfficeNumber();
-    // compare result to constructor requirements (assert)
     expect(result).toBe(officeNumber);
   });
 });

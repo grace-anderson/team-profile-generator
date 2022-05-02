@@ -1,5 +1,3 @@
-class InvalidOfficeNumberError extends Error {
+class InvalidOfficeNumberError extends Error {}
 
-}
-
-module.exports = InvalidOfficeNumberError
+module.exports = InvalidOfficeNumberError;

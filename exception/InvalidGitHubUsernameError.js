@@ -1,5 +1,3 @@
-class InvalidGitHubUsernameError extends Error {
+class InvalidGitHubUsernameError extends Error {}
 
-}
-
-module.exports = InvalidGitHubUsernameError
+module.exports = InvalidGitHubUsernameError;

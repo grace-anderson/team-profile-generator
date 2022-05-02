@@ -1,5 +1,3 @@
-class InvalidEmailError extends Error {
+class InvalidEmailError extends Error {}
 
-}
-
-module.exports = InvalidEmailError
+module.exports = InvalidEmailError;

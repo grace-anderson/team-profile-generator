@@ -1,5 +1,3 @@
-class InvalidIdError extends Error {
+class InvalidIdError extends Error {}
 
-}
-
-module.exports = InvalidIdError
+module.exports = InvalidIdError;

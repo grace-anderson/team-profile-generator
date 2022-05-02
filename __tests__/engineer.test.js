@@ -13,7 +13,6 @@ describe("Engineer Test", () => {
       "hank@galacticroster.com",
       "fabpot"
     );
-
     expect(newEngineer).toBeInstanceOf(Object);
     expect(newEngineer).toBeInstanceOf(Engineer);
   });
@@ -35,7 +34,6 @@ describe("Engineer Test", () => {
   // 3. Engineer constructor should only accept valid id
   it("getID() should not accept invalid id in the constructor", () => {
     const id = "aaa";
-
     expect(function () {
       const engineer = new Engineer(
         "Hank Sreaves",
@@ -48,18 +46,14 @@ describe("Engineer Test", () => {
 
   // 4. I should get the id that I set in the constructor
   test("getId() should return the id that was set in the constructor", () => {
-    // define id source of truth
     const id = 999;
-    // set up the environment to test
     const engineer = new Engineer(
       "Hank Sreaves",
       id,
       "hank@galacticroster.com",
       "fabpot"
     );
-    // execute the test code
     const result = engineer.getId();
-    // compare result to constructor requirements (assert)
     expect(result).toBe(id);
   });
 
@@ -67,7 +61,6 @@ describe("Engineer Test", () => {
   // 5. Engineer constructor should only accept valid email
   it("getEmail() should not accept invalid email in the constructor", () => {
     const email = "aaa";
-
     expect(function () {
       const engineer = new Engineer("Hank Sreaves", 999, email, "fabpot");
     }).toThrow(InvalidEmailError);
@@ -75,13 +68,9 @@ describe("Engineer Test", () => {
 
   // 6. I should get the email that I set in the constructor
   test("getEmail() should return the email that was set in the constructor", () => {
-    // define email source of truth
     const email = "hank@galacticroster.com";
-    // set up the environment to test
     const engineer = new Engineer("Hank Sreaves", 999, email, "fabpot");
-    // execute the test code
     const result = engineer.getEmail();
-    // compare result to constructor requirements (assert)
     expect(result).toBe(email);
   });
 
@@ -94,28 +83,32 @@ describe("Engineer Test", () => {
       "hank@galacticroster.com",
       "fabpot"
     );
-
     expect(engineer.getRole()).toEqual(expect.stringContaining("Engineer"));
   });
 
   // 8. Engineer constructor should only accept valid github username
   it("getGitHub() should not accept invalid github username in the constructor", () => {
     const gitHub = "fab - pot";
-
     expect(function () {
-      const engineer = new Engineer("Hank Sreaves", 999, "hank@galacticroster.com", gitHub);
+      const engineer = new Engineer(
+        "Hank Sreaves",
+        999,
+        "hank@galacticroster.com",
+        gitHub
+      );
     }).toThrow(InvalidGitHubUsernameError);
   });
 
   // 9. I should get the gitHub username that I set in the constructor
   test("getGitHub() should return the GitHub username that was set in the constructor", () => {
-    // define id source of truth
     const gitHub = "fabpot";
-    // set up the environment to test
-    const engineer = new Engineer("Hank Sreaves", 999, "hank@galacticroster.com", gitHub);
-    // execute the test code
+    const engineer = new Engineer(
+      "Hank Sreaves",
+      999,
+      "hank@galacticroster.com",
+      gitHub
+    );
     const result = engineer.getGitHub();
-    // compare result to constructor requirements (assert)
     expect(result).toBe(gitHub);
   });
 });
