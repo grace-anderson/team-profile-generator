@@ -38,7 +38,7 @@ Every leader of a software development team is tasked with planning their team r
 * Watch this [video](https://drive.google.com/file/d/1sZfav2MEzx4o1VpuHwFeVEkxEFWzGHkk/view?usp=sharing) for instructions to run unit tests and generate the team roster webpage.
 * Watch this [video](https://drive.google.com/file/d/1E4A8J9sGbh03yh-SlnRoJ1F83QLEUQNg/view?usp=sharing) for full instructions, including explanation of the unit tests, and a demonstration of the application's functionality
 * See [screenshots](#screenshots) below depicting more of the application's functionality
-* You can also find sample of the generated HTML file in this repo: ([./sample/index.html](./sample/index.html)) created using the Generator
+* You can also find a sample of the generated HTML file in this repo: ([./sample/index.html](./sample/index.html)) created using the Generator
 * After creating your initial team profile, you may return to the generator to recreate the profile as employees change or when a new roster is needed.  
 * You may contribute to the [Team Profile Generator project](https://github.com/grace-anderson/team-profile-generator) following the Contribution Guidelines below.
 
@@ -102,3 +102,7 @@ See more of Helen Anderson's work on [GitHub](https://github.com/grace-anderson)
 
 ### Gif showing how clicking engineers' gitHub links opens a gitHub profile
 ![Clicking gitHub link opens gitHub profile](/img/gitHub-link-opens-github-profile.gif)
+
+### Videos demonstrating Team Profile Generator app
+* Instructions to run unit tests and generate the team roster webpage: [video](https://drive.google.com/file/d/1sZfav2MEzx4o1VpuHwFeVEkxEFWzGHkk/view?usp=sharing) 
+* Full instructions, including explanation of the unit tests, and a demonstration of the application's functionality [video](https://drive.google.com/file/d/1E4A8J9sGbh03yh-SlnRoJ1F83QLEUQNg/view?usp=sharing) 
